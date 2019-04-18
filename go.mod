@@ -5,6 +5,7 @@ require (
 	github.com/dgraph-io/badger v1.5.4
 	github.com/dgryski/go-farm v0.0.0-20190104051053-3adb47b1fb0f // indirect
 	github.com/eclipse/paho.mqtt.golang v1.1.1
+	github.com/go-redis/redis v6.15.2+incompatible
 	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
 	github.com/golang/protobuf v1.2.0 // indirect
 	github.com/nats-io/go-nats v1.7.0
