@@ -6,6 +6,7 @@ import (
 	"github.com/mishudark/eventhus/eventbus/mosquitto"
 	"github.com/mishudark/eventhus/eventbus/nats"
 	"github.com/mishudark/eventhus/eventbus/rabbitmq"
+	"github.com/mishudark/eventhus/eventbus/redis"
 	"github.com/mishudark/eventhus/eventstore/badger"
 	"github.com/mishudark/eventhus/eventstore/mongo"
 )
@@ -54,6 +55,13 @@ func NewClient(es EventStore, eb EventBus, cb CommandBus, cmdConfigs ...CommandC
 		conf(repository, register)
 	}
 	return cb(register)
+}
+
+// Redis generates a Redis implementation of EventBus
+func Redis(addr string, password string, db int) EventBus {
+	return func() (eventhus.EventBus, error) {
+		return redis.NewClient(addr, password, db), nil
+	}
 }
 
 // RabbitMq generates a RabbitMq implementation of EventBus
